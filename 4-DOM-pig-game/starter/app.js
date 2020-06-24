@@ -39,7 +39,10 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
  }
 });
 
-document.querySelector('btn-hold').addEventListener('click',function(){
+document.querySelector('.btn-hold').addEventListener('click',function(){
   score[activePlayer]+=roundScore;
-  document.querySelector('score-'+activePlayer).textContent=score[activePlayer];
+  document.querySelector('#score-'+activePlayer).textContent=score[activePlayer];
+  if(score[activePlayer]>=100){
+    alert('Player'+activePlayer+' Win the game.');
+  }
 })
