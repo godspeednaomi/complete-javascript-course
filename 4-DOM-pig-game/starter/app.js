@@ -22,18 +22,18 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
    roundScore+=dice;
    document.querySelector('#current-'+activePlayer).textContent = roundScore;
    if(score[activePlayer]+roundScore>=100){
-     
+     document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('winner');
    }
  }else{
    nextPlayer();
  }
 });
 
-
-//hold buttin pressing
+//hold button pressing
   document.querySelector('.btn-hold').addEventListener('click',function(){
   score[activePlayer]+=roundScore;
   document.querySelector('#score-'+activePlayer).textContent=score[activePlayer];
+  document.querySelector('#current-'+activePlayer).textContent=0;
   nextPlayer();
 });
 
@@ -47,6 +47,9 @@ function init(){
   document.getElementById('current-0').textContent = 0;
   document.getElementById('current-1').textContent = 0;
   document.querySelector('.dice').style.display = 'none'
+  document.querySelector('player-0-panel').classList.remove('winner');
+  document.querySelector('player-1-panel').classList.remove('winner');
+  document.querySelector('player-0-panel').classList.Add('active');
 }
 
 function nextPlayer(){
