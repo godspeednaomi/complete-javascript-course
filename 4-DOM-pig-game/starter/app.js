@@ -19,12 +19,27 @@ document.getElementById('current-0').textContent = 0;
 document.getElementById('current-1').textContent = 0;
 
 var x  = document.querySelector('#score-0').textContent;
-console.log(x);
+// console.log(x);
 document.querySelector('.dice').style.display = 'none'
 document.querySelector('.btn-roll').addEventListener('click',function(){
  var dice = Math.floor(Math.random()*6+1);
  var diceDOM = document.querySelector('.dice');
  diceDOM.style.display = 'block';
  diceDOM.src = 'dice-'+dice+'.png';
-
+ if(dice!==1){
+   roundScore+=dice;
+   document.querySelector('#current-'+activePlayer).textContent = roundScore;
+ }else{
+   document.querySelector('.dice').style.display='none';
+   activePlayer===0?activePlayer=1:activePlayer=0;
+   roundScore=0;
+   document.querySelector('#current-'+activePlayer).textContent = 0;
+   document.querySelector('.player-0-panel').classList.toggle('active');
+   document.querySelector('.player-1-panel').classList.toggle('active');
+ }
 });
+
+document.querySelector('btn-hold').addEventListener('click',function(){
+  score[activePlayer]+=roundScore;
+  document.querySelector('score-'+activePlayer).textContent=score[activePlayer];
+})
