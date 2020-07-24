@@ -68,7 +68,6 @@ console.log(a);
 console.log(b);
 
 
-
 // Objects
 var obj1 = {
     name: 'John',
